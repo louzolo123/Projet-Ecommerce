@@ -1,0 +1,297 @@
+{% load static %}
+{% if request.user.is_authenticated   %}
+<nav>
+    <div class="container-fluid d-flex flex-column m-0">
+        <div class="d-flex justify-content-between  mb-3 ">
+            <div class="first d-flex justify-content-start">
+                <a class="text-black text-decoration-none" href="#">About us |</a>
+                <a class="text-black text-decoration-none mx-2" href="#"> My account |</a>
+                <a class="text-black text-decoration-none mx-2" href="#" > Wishlist |</a>
+                <a class="text-black text-decoration-none mx-2" href="#" > Order Tracking |</a>
+            </div>
+            <div class="second">
+                <p>this site is securise </p>
+            </div>
+            <div class="second">
+                <a href="#" class="text-black text-decoration-none">Need help? call Us: <span class="text-success">+242068195646</span> | engl | Xaf</a>
+            </div>    
+        </div>
+        <div class="d-flex justify-content-between align-middle p-2 border-bottom-2 border-black mb-5">
+                <div class="div">
+                    <h1>Shopping</h1>
+                </div>
+                    
+                <div class="input-group input-group-lg w-50 mt-2 mx-0 pe-0">
+                    <span class="input-group-text bg-light dropdown dropdown-toggle" id="inputGroup-sizing-lg">
+                            All categories
+                    </span>
+                    <input type="text" class="form-control " aria-label="Sizing example input"
+                        placeholder="Search all categories..."
+                     aria-describedby="inputGroup-sizing-lg">
+                </div>
+                <div class="icons d-flex align-items-center ">
+                    <a href="#" class="mx-4 text-black h4">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                    </a>
+                    <a href="#" class="mx-4 text-black h4">
+                        <i class="fa-solid fa-shop"></i>
+                    </a>
+                    <a href="#" class="mx-4 text-black h4 ">
+                        <i class="fa fa-cart-shopping"></i>
+                    </a>
+                    <a href="#" class="mx-4 text-black h4">
+                        <i class="fa-regular fa-heart"></i>
+                    </a>
+                    <a href="#" class="mx-4 text-black h4 displayOnNavbar" data-bs-target="#addModalToggle" data-bs-toggle="modal">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                </div>
+        </div>
+        <div class="container-fluid d-flex w-100 align-items-center justify-content-between" id='effectScroll' >
+            <div class="button" data-bs-target="#seeModalToggle" data-bs-toggle="modal">
+                <div class="btn btn-lg p-2 text-white bg-success mt-4 mb-2" >
+                    <i class="fa fa-th"></i> <span>all categorie</span>
+                </div>
+            </div>
+
+            <div class="navigation d-flex mx-5">
+                <a  class='px-5 text-black text-decoration-none mx-1 px-1' href="{% url "apps:index" %}"><i class="fa fa-home"></i> Home</a>
+                <li class='nav-item list-unstyled  dropdown'>
+                    <a href='#' class=' nav-link dropdown-toggle' data-bs-toggle='dropdown' class='btn bordered p-2'>Menu</a>
+                    
+                    <ul class='dropdown-menu me-3 shadow-lg'>
+                        <div class="d-flex p-3">
+                         <div class="flex-column dropdown-item mx-5">
+                            <h5 class="mb-2 text-success">Fruit & Vegetable</h5>
+                            <p><a href="#" class="text-decoration-none text-black">Papaw</a></p>
+                            <p><a href="#" class="text-decoration-none text-black">Mango</a></p>
+                            <p><a href="#" class="text-decoration-none text-black">Orange</a></p>
+                            <p><a href="#" class="text-decoration-none text-black">Fraise</a></p>
+                            <p><a href="#" class="text-decoration-none text-black">Avocat</a></p>
+                            <p><a href="#" class="text-decoration-none text-black">More</a></p>
+                         </div>
+                         <div class="flex-column dropdown-item mx-5">
+                            <h5 class="mb-3 text-success">Juice & Breakfast</h5>
+                            <p><a href="#" class="text-decoration-none text-black">Juice Mango</a></p>
+                            <p><a href="#" class="text-decoration-none text-black">Juice Papaw</a></p>
+                            <p><a href="#" class="text-decoration-none text-black">Juice Orange</a></p>
+                            <p><a href="#" class="text-decoration-none text-black">Juice Fraise</a></p>
+                            <p><a href="#" class="text-decoration-none text-black">Juice Avocat</a></p>
+                            <p><a href="#" class="text-decoration-none text-black">More</a></p>
+                         </div>
+                         
+                         <div class="flex-column dropdown-item mx-5">
+                            <h5 class="mb-3 text-success">Meat & seadfood</h5>
+                            <p><a href="#" class="text-decoration-none text-black">Chicken</a></p>
+                            <p><a href="#" class="text-decoration-none text-black">Chicken free</a></p>
+                            <p><a href="#" class="text-decoration-none text-black">Boeuf</a></p>
+                            <p>Gesier</p>
+                            <p><a href="#" class="text-decoration-none text-black">Porc</a></p>
+                            <p><a href="#" class="text-decoration-none text-black">More</a></p>
+                         </div>
+                         <div class="dropdown-item text-center ">
+                            
+                                <h5 class="mb-3 text-success">Offre speciale</h5>
+                                <div id='carouselExampleCaptions' class='carousel slide' data-bs-ride='carousel'>
+                                    <div class='carousel-indicators'>
+                                        <button type="button" data-bs-target="#carouselExampleCaptions"
+                                        data-bs-slide-to="0"
+                                        class="active" aria-current="true" aria-label="Slide 0">
+                                        </button>
+                                        <button type="button" data-bs-target="#carouselExampleCaptions"
+                                        data-bs-slide-to="1"
+                                        class="active" aria-current="true" aria-label="Slide 1">
+                                        </button>
+                                        <button type="button" data-bs-target="#carouselExampleCaptions"
+                                        data-bs-slide-to="2"
+                                        class="active" aria-current="true" aria-label="Slide 2">
+                                        </button>
+                                    </div>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img class='h-100 w-100' src="{% static 'apps/asset/image/téléchargement (11).jpg' %}" alt="" class="d-block w-100">
+                                            <div class="carousel-caption d-block">
+                                                <h5 class="mb-3 text-success"></h5>
+                                            </div>
+                                          
+                                        </div>
+                                        <div class="carousel-item ">
+                                            <img class='h-100 w-100' src="{% static 'apps/asset/image/téléchargement (7).jpg' %}" alt="" class="d-block w-100">
+                                            <div class="carousel-caption d-block">
+                                                <h5 class="mb-3 text-success"></h5>
+                                            </div>
+                                          
+                                        </div>
+                                        <div class="carousel-item ">
+                                        <img class='h-100 w-100' src="{% static 'apps/asset/image/téléchargement (9).jpg' %}" alt="" class="d-block w-100">
+                                            <div class="carousel-caption d-block">
+                                                <h5 class="mb-3 text-success"></h5>
+                                            </div>
+                                          
+                                        </div>
+                                        <button 
+                                            class="carousel-control-prev"
+                                            type="button"
+                                            data-bs-target="#carouselExampleCaptions"
+                                            data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon"></span>
+                                           
+                                        </button>
+                                        <button 
+                                            class="carousel-control-next"
+                                            type="button"
+                                            data-bs-target="#carouselExampleCaptions"
+                                            data-bs-slide="next">
+                                            <span class="carousel-control-next-icon"></span>
+                            
+                                        </button>
+                                    </div>
+                                    <button class="btn btn-success text-white mt-2"> <i class="fa fa-cart-plus"></i>  Buy now!</button>
+                                   
+
+                                </div>
+                            
+                            
+                           
+                         </div>
+                        </div>
+                         
+                    </ul>
+                </li>
+                <a class='px-5 text-black text-decoration-none' href="#">About</a>
+                <a class='px-5 text-black text-decoration-none' href="#">Shop</a>
+                <a class='px-5 text-black text-decoration-none' href="{% url "apps:vendor" %}">Vendors</a>
+                <a class='px-5 text-black text-decoration-none' href="#">Blog</a>
+                <a class='px-5 text-black text-decoration-none' href="#">Pages</a>
+                <a class='px-5 text-black text-decoration-none' href="#">Contact</a>
+                
+            </div>
+        </div>
+        {% if messages %}
+            {% for message in messages  %}
+                <div class="alert alert-{{message.tags}} mt-2">
+                       <strong>{{message}}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+    </div>
+    <div class="modal fade" id="addModalToggle" aria-hidden="true" aria-labelledby="addModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="addModalToggle">My Account</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-start ">
+             <div class="container-fluid ">
+                <div class="row p-4 ">
+                    <div class="col-md-6 p-4 h5 modalListProfil">
+                        <div class="">
+                            <i class="fa-regular fa-user" ></i> <a href="#" class="mx-3 text-decoration-none text-black">My Profil</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-4 h5 modalListProfil">
+                        <div class="">
+                            <i class="fa-regular fa-heart"></i> <a href="#" class="mx-3 text-decoration-none text-black">My wilshist</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-4 h5 modalListProfil">
+                        <div class="">
+                            <i class="fa-solid fa-cart-shopping"></i> <a href="#" class="mx-3 text-decoration-none text-black">My Course</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-4 h5 modalListProfil">
+                        <div class="">
+                            <i class="fa fa-sliders" ></i> <a href="#" class="mx-3 text-decoration-none text-black">Settings</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-4 h5">
+                        {% if request.user.is_authenticated  %}
+                        <div class="">
+                            <i class="fa fa-sign-out" ></i> <a href="{% url "usersauths:logout" %}" class="mx-3 text-decoration-none text-black">Logout</a>
+                        </div>
+                        {% else %}
+                        <div class="">
+                            <i class="fa fa-sign-in" ></i> <a href="{% url "usersauths:login" %}" class="mx-3 text-decoration-none text-black">Login</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                </div>
+               
+                
+              
+                
+               
+               
+             </div>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="seeModalToggle" aria-hidden="true" aria-labelledby="seeModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="seeModalToggle">All Categories</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <div class="modal-body text-start">
+                <div class="row">
+                    {% for c in categories %}
+                       <div class="col-md-6 p-3 firstPart ">
+                           <a href="{% url "apps:displayCategoryOfProducts" c.id %}" class=" text-decoration-none mb-3 w-100">
+                               <i class="fa fa-th-large "></i><span class="mx-3 p-2">{{c.title}}</span>
+                           </a>
+                       </div>
+                    {% endfor %}   
+                </div>
+             </div>      
+            
+            <div class="container text-center p-3">
+                <a href="{% url "apps:category" %}" class='text-decoration-none text-black mb-4'>
+                    <i class="fa fa-add"></i><span>Show all categories</span>
+                </a>
+           </div>
+          </div>
+        </div>
+      </div>
+   
+</nav>
+{% else %}
+<nav class="d-flex justify-content-between align-items-center shadow-sm  p-4">
+    <div class="container h2 text-black">
+         SHOOPING FAST
+    </div>
+
+</nav>
+    {% if messages %}
+        {% for message in messages  %}
+            <div class="alert alert-{{message.tags}} mt-2">
+                <strong>{{message}}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endif %}
+
+<script src="static/project/fichier/js/bootstrap.bundle.min.js"></script>
+<script>
+    const alert = document.querySelector('.alert')
+    const renderNav = document.getElementById('effectScroll')
+    console.log(renderNav)
+    setTimeout(() =>{
+        alert.style.display='none'
+    },5000) 
+    window.addEventListener('scroll',()=>{
+        if (window.scrollY > 148){
+           renderNav.classList.add('displayNavabr') 
+           
+        }
+        else {
+            renderNav.classList.remove('displayNavabr')
+        }
+        console.log(window.scrollY)
+    })
+</script>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block styles %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{% static 'project/fichier/css/bootstrap.min.css'%}">
+        <link rel="stylesheet" href="{% static '/fichier/own/style.css'%}">
+
+    {% endblock styles %}
+    
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+    {% include "partial/navbar.html" %}
+    {% block content %}{% endblock content %}di
+    <!-- Inclure jQuery dans votre template -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'project/fichier/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

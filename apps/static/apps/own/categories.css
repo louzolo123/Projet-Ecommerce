@@ -1,0 +1,92 @@
+.category{
+    padding: 38px 38px;
+}
+.box1 img{
+    width: 100%;
+    height: 400px;
+  } 
+  .partCategory{
+    width: 25%;
+    height: 100vh;
+    background: white;
+  }
+  .partProducts{
+    width: 75%;
+    height: 90vh;
+  }
+  .welcome{
+    margin-top: -290px;
+  }
+  .element a
+  {
+    text-decoration: none;
+    color: black;
+    margin: 5px;
+  }
+  .hoverIcons{
+    margin-top: 100px;
+    text-align: center;
+    margin-left: 87px;
+    padding: 2px;
+    visibility: hidden;
+  }
+  .hoverIcons i{
+    border: 1px solid rgba(253, 253, 253, 0.934);
+    background: rgba(253, 253, 253, 0.934);
+    margin: 2px;
+    padding: 5px
+  }
+  .card:hover{
+    .hoverIcons{
+      visibility: visible;
+    }
+  }
+  .firstPart a{
+    border: 1px solid rgba(179, 167, 167, 0.224);
+    padding: 10px;
+    font-size: 17px;
+    color: black;
+    transition: 0.9s;
+  }
+  .firstPart a:hover{
+    border: 1px solid rgba(68, 165, 4, 0.402);
+    background-color: rgba(2, 234, 45, 0.402);
+    color: white;
+    box-shadow: 1px 1px 5px rgba(76, 75, 75, 0.3);
+  
+  }
+  
+  .displayNavabr {
+    z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: black;
+    transition: 1.4s ease;
+    background: white;
+  
+  }
+  .borderBottomm{
+    border-bottom: 2px solid green;
+  }
+  .displayBorderCategory{
+    border: 1px solid rgb(238, 238, 238);
+    padding: 10px 30px;
+    width: 99%;
+    transition: 0.6s;
+  }
+  .displayBorderCategory:hover{
+    box-shadow: 1px 1px 5px rgba(76, 75, 75, 0.3);
+    border: 1px solid rgb(18, 240, 18);
+    
+  }
+.displayPourcentage {
+    background: rgb(241, 186, 67);
+    height: 35px;
+   
+    
+  }
+.backgroundImage{
+
+}
