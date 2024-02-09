@@ -1,0 +1,74 @@
+{% extends "layout/base.html" %}
+{% load static %}
+{% block title %}Detail Product{% endblock title %}
+{% block styles %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'apps/fichier/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'apps/own/productDetail.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
+{% endblock styles %}
+{% block content %}
+    <div class="container-fluid w-100 h-100 mt-3">
+        <div class="row">
+            <div class="col-md-4 ">
+                <div class="container">
+                    <img src="{{product.image.url}}" class="w-100 h-100 mb-3" alt="">
+                    <div class="displayOtherProductSimilary d-flex align-items-center">
+                        <div class="image1 bg-black mx-2 w-50 h-50 rounded-2">Bloc 1 here </div>
+                        <div class="image1 bg-primary mx-2 w-50 h-50 rounded-2">Bloc 2 here </div>
+                        <div class="image1 bg-warning mx-2 w-50 h-50 rounded-2">Bloc 3 here </div>
+                    </div>
+                </div>
+             
+            </div>
+            <div class="col-md-4 ">
+                <div class="container">
+                    <div class="displayFunctionSale bg-danger w-25  text-center rounded-3 px-1 py-1 mb-3">
+                        <p class='text-light'>Sale off</p>
+                    </div>
+                    <h1 class="text-black mb-1">
+                        {{product.title}}
+                    </h1>
+                    <p>⭐⭐⭐⭐⭐(5.0)</p>
+                    <div class="displayPriceProduct d-flex">
+                        <div class="displayPrice">
+                            <h1 class="text-success">${{product.price}}</h1>
+                        </div>
+                        <div class="displayOldPriceAndPourcentage flex-column mx-2 p-0">
+                            <p>{{product.get_pourcentage|floatformat:0}}% off </p>
+                            <h3> <strike>${{product.old_price}}</strike></h3>
+                        </div>
+                    </div>
+                    <p>{{product.description}}</p>
+                    <div class="d-flex align-items-center">
+                        <div class="DiaplayAdd">
+                            <input type="number" value="1" min="1" max="900">
+                        </div>
+                        <div class="add mx-1">
+                            <button class="bg-success text-light p-3 border-success">
+                                <i class="fa fa-shopping-cart"></i>
+                                Add to cart
+                            </button>
+                        </div>
+                        <div class="icons1 p-3 mx-2 ">
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+                        <div class="icons1 p-3 mx-2 ">
+                            <i class="fa fa-share"></i>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="col-md-4  justify-content-center">
+                <div class="blocInformationOne shadow-sm p-4 rounded-2">
+                    <h5>Disponible</h5>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'apps/fichier/js/bootstrap.bundle.min.js' %}"></script>
+{% endblock content %}

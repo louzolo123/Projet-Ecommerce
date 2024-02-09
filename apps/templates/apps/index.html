@@ -6,6 +6,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="{% static 'apps/fichier/css/bootstrap.min.css'%}">
 <link rel="stylesheet" href="{% static 'apps/own/styles.css'%}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
 {% endblock styles %}
 {% block content %}
    <div class="container-fluid w-100 d-flex align-items-center">
@@ -54,83 +57,47 @@
             </div>
             <div class="boxPartCategory border-1 rounded-2 w-100 shadow-lg h-100 p-0 ">
                 <h2 class="p-3 borderBottomm mt-5 mb-3">Category</h2>
+                {% for c in category %}
                 <div class="d-flex  flex-column ">
-                    <div class="d-flex align-items-center justify-content-between mb-4 ">
-                        <a href="#" class="px-2 mx-5 mb-2 text-decoration-none text-black h5 displayBorderCategory">
-                            <i class="fa fa-mug-hot"></i>  Breakfast & Food 
+                    <div class="d-flex align-items-center justify-content-between mb-4 displayBorderCategory ">
+                        <a href="{% url "apps:displayCategoryOfProducts" c.id %}" class="px-2 mx-0 mb-2 text-decoration-none text-black h5 ">
+                            {{c.title}} 
                         </a>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between mb-3 mb-4 ">
-                        <a href="#" class="px-2 mx-5 text-decoration-none text-black h5 displayBorderCategory">
-                            <i class="fa fa-drumstick-bite"></i>  Fresh Meat 
-                        </a>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between mb-3 mb-4 ">
-                        <a href="#" class="px-2 mx-5 text-decoration-none text-black h5 displayBorderCategory">
-                            <i class="fa fa-gamepad"></i>  Game  
-                        </a>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between mb-3 mb-4 ">
-                        <a href="#" class="px-2 mx-5 text-decoration-none text-black h5 displayBorderCategory">
-                            <i class="fa fa-computer"></i> Electronic machin
-                        </a>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between mb-3 mb-4 ">
-                        <a href="#" class="px-2 mx-5 text-decoration-none text-black h5 displayBorderCategory">
-                            <i class="fa fa-wrench"></i> Outils mecanic
-                        </a>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between mb-3 mb-4 ">
-                        <a href="#" class="px-2 mx-5 text-decoration-none text-black h5 displayBorderCategory">
-                            <i class="fa fa-wine-bottle"></i> Vine & Juice
-                        </a>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-between mb-3 mb-4 ">
-                        <a href="#" class="px-2 mx-5 text-decoration-none text-black h5 displayBorderCategory">
-                            <i class="fa fa-computer"></i> Electronic machin
-                        </a>
+                        <span class="displayNumberCategoryDisponible">{{c.category.count}}</span>
                     </div>
                 </div>
+                {% endfor %}
+              
                
               
             </div>
             <div class=" container boxPartCategory border-1 rounded-2 w-100 shadow-lg h-7 p-0 ">
                 <h2 class="p-3 borderBottomm mt-5 mb-3">New Products</h2>
+                {% for prod in product %}
                 <div class="d-flex  flex-column w-100 ">
                     <div class="d-flex align-items-center mb-4 justify-content-evenly ">
                         <div class="imageNewProducts w-50">
-                            <img src="{% static 'apps/asset/image/téléchargement (1).jpg' %}" class="rounded-2 w-75 h-75 mx-2" alt="">
+                            <img src="{{prod.image.url}}" class="rounded-2 w-75 h-75 mx-2" alt="">
                         </div>
                         <div class="d-flex flex-column w-50">
                             <div class="title">
-                                <h4 class="text-success">Juice Orange</h4>
+                                <h4 class="text-success">
+                                    <a href="{% url "apps:productDetail" prod.id %}" class="text-decoration-none text-black">
+                                        {{prod.title}}
+                                    </a>
+                                </h4>
                             </div>
                             <div class="price">
-                                <h6>$800</h6>
+                                <h6>${{prod.price}}</h6>
                             </div>
                             <div class="star">
                                 <h6>⭐⭐</h6>
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex align-items-center mb-4 justify-content-evenly ">
-                        <div class="imageNewProducts w-50">
-                            <img src="{% static 'apps/asset/image/téléchargement (7).jpg' %}" class="rounded-2 w-75 h-75 mx-2" alt="">
-                        </div>
-                        <div class="d-flex flex-column w-50">
-                            <div class="title">
-                                <h5 class="text-success">Iphone 13 Pro max </h5>
-                            </div>
-                            <div class="price">
-                                <h6>$1900</h6>
-                            </div>
-                            <div class="star">
-                                <h6>⭐⭐⭐⭐</h6>
-                            </div>
-                        </div>
-                    </div>
-                   
                 </div>
+                {% endfor %}
+             
                
               
             </div>
@@ -155,6 +122,7 @@
             <div class="d-flex aling-items-center justify-content-between mt-3 mb-2 mx-1">
                 <h2 >Popular Products</h2>
                 <div class="element">
+                    <a href="{% url "apps:index" %}" class='active'>All Product</a>
                     <a href="#">Milk & Diaries</a>
                     <a href="#">Coffe & Teas </a>
                     <a href="#">Peats Food</a>
@@ -173,7 +141,7 @@
                                 <p class="text-light ">-{{p.get_pourcentage|floatformat:0}}%</p>
                             </div>
                             <div class="hoverIcons d-flex  position-absolute justify-content-center">
-                                <a href="#" class="text-black text-decoration-none">
+                                <a href="{% url 'apps:productDetail' p.id %}" class="text-black text-decoration-none">
                                     <i class="fa-regular fa-eye"></i>
                                 </a>
                                 <a href="#" class="text-black text-decoration-none"><i class="fa fa-share"></i></a>
@@ -183,7 +151,10 @@
                                 
                                 
                             </div>
-                            <img src="{{p.image.url}}" class="card-img-top mx-auto p-3 rounded-2" alt="...">
+                            <a href='{% url "apps:productDetail" p.id %}'>
+                                <img src="{{p.image.url}}" class="card-img-top mx-auto p-3 rounded-2" alt="...">
+                            </a>
+                            
                             <div class="card-body">
                               <p class="card-text">{{p.category.title}}</p>
                               <h5>{{p.title}}</h5>

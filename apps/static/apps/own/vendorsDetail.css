@@ -1,9 +1,12 @@
 body{
   font-family: 'Sunflower', sans-serif;
 }
-.category{
-    padding: 38px 38px;
-    
+.boxOneImage img{
+    border-radius: 100%;
+    object-fit: 100% cover;
+    height: 140px;
+    width: 140px;
+    border: 1px solid black;
 }
 .box1 img{
     width: 100%;
@@ -46,20 +49,9 @@ body{
     }
   }
   .firstPart a{
-    border: 1px solid rgba(179, 167, 167, 0.224);
-    padding: 10px;
     font-size: 17px;
     color: black;
-    transition: 0.9s;
   }
-  .firstPart a:hover{
-    border: 1px solid rgba(68, 165, 4, 0.402);
-    background-color: rgba(2, 234, 45, 0.402);
-    color: white;
-    box-shadow: 1px 1px 5px rgba(76, 75, 75, 0.3);
-  
-  }
-  
   .displayNavabr {
     z-index: 9999;
     position: fixed;
@@ -85,9 +77,13 @@ body{
     border: 1px solid rgb(18, 240, 18);
     
   }
-.displayPourcentage {
-    background: rgb(255, 174, 0);
-    height: 50px;
-    color: white;
-    
+  a .displayOnNavbar{
+    display: none;
   }
+  
+.imageBorder{
+    border: 1px solid rgb(177, 163, 163);
+}
+.informationOnProducts{
+    margin-top: -20px;
+}
