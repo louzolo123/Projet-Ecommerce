@@ -14,19 +14,32 @@
         <div class="row">
             <div class="col-md-4 ">
                 <div class="container">
-                    <img src="{{product.image.url}}" class="w-100 h-100 mb-3" alt="">
-                    <div class="displayOtherProductSimilary d-flex align-items-center">
-                        <div class="image1 bg-black mx-2 w-50 h-50 rounded-2">Bloc 1 here </div>
-                        <div class="image1 bg-primary mx-2 w-50 h-50 rounded-2">Bloc 2 here </div>
-                        <div class="image1 bg-warning mx-2 w-50 h-50 rounded-2">Bloc 3 here </div>
+                    <img src="{{product.image.url}}" class="w-100 h-100 mb-3 border-1 border-black" alt="">
+                    {% if p_images %}
+                    <h5>Complete your cart with kits on Tekissa {{user.username}} !</h5>
+                    <div class="displayOtherProductSimilary d-flex align-items-center mt-4">
+                        
+                        {% for p_image in p_images  %}
+                        <div class="image1  mx-2 w-50 h-50 rounded-2 ">
+                            <a href="{% url "apps:productDetail" p_image.id %}">
+                                <img src="{{p_image.image.url}}" class="rounded-2 w-75 h-75 mx-2  p-2" alt="">
+                            </a>
+                        </div>
+                        {% endfor %}
                     </div>
+                    {% else %}
+                    <h5>Try to get more prodcuts here  <a class="text-primary displayBonus" data-bs-target="#displayModalToggle" data-bs-toggle="modal">All product</a>
+                    </h5>
+                    {% endif %}
+             
                 </div>
              
             </div>
+        
             <div class="col-md-4 ">
                 <div class="container">
                     <div class="displayFunctionSale bg-danger w-25  text-center rounded-3 px-1 py-1 mb-3">
-                        <p class='text-light'>Sale off</p>
+                        <p class='text-light'>Reduce: -{{product.get_pourcentage|floatformat:0}} % </p>
                     </div>
                     <h1 class="text-black mb-1">
                         {{product.title}}
@@ -41,10 +54,10 @@
                             <h3> <strike>${{product.old_price}}</strike></h3>
                         </div>
                     </div>
-                    <p>{{product.description}}</p>
+                    <p>{{product.description|truncatechars:100}}</p>
                     <div class="d-flex align-items-center">
                         <div class="DiaplayAdd">
-                            <input type="number" value="1" min="1" max="900">
+                            <input type="number" value="1" min="1" max="900" class="p-1">
                         </div>
                         <div class="add mx-1">
                             <button class="bg-success text-light p-3 border-success">
@@ -63,12 +76,152 @@
                
             </div>
             <div class="col-md-4  justify-content-center">
-                <div class="blocInformationOne shadow-sm p-4 rounded-2">
-                    <h5>Disponible</h5>
+                <div class="blocInformationOne shadow-lg bg-light p-4 rounded-2 mx-5 mb-5">
+                    <h4 class="mb-4">Delivery</h4>
+                    <div class="container">
+                        <p>
+                            <span> 
+                                <i class="fa fa-map-marker-alt"></i> Adress: {{product.vendor.address}}
+                            </span>
+                        </p>
+                    
+                     <div class="d-flex align-items-center justify-content-end text-center mb-3" >
+                        <div class="rating">
+                            <a href="#" class="text-success text-decoration-none">Change</a>
+                        </div>
+                     </div>
+                     <div class="container">
+                        <h4 class="mb-4">Return & Warranty</h4>
+                        <h6 class="mb-2">
+                            <p>
+                                <i class="fa fa-shield-alt"></i> 100% Authentic
+                            </p>
+                        </h6>
+                        <h6 class="mb-2">
+                            <p>
+                                <i class="fa fa-undo-alt"></i> 100% Return
+                            </p>
+                        </h6>
+                        <h6>
+                            <p>
+                                <i class="fa fa-calendar-check"></i> 12 Months Warranty
+                            </p>
+                        </h6>
+                     </div>
+                     
+                       
+                    </div>
                     
                 </div>
+                <div class="blocInformationOne shadow-lg bg-light p-4 rounded-2 mx-5 mb-5">
+                    <h4 class="mb-4">Vendor</h4>
+                    <div class="container">
+                        <h5 class="text-success">{{product.vendor.title}} C.O</h5>
+                        <p>⭐⭐⭐⭐⭐ (5 reviews)</p>
+                        <p>
+                            <span> 
+                                <i class="fa fa-map-marker-alt"></i> Adress: {{product.vendor.address}}
+                            </span>
+                        </p>
+                     <p>
+                        <span>
+                            <i class='fa fa-headphones-alt'></i> Call: {{product.vendor.contact}}
+                        </span>
+                     </p>
+                     <div class="d-flex align-items-center justify-content-around text-center mb-3" >
+                        <div class="rating">
+                            <p class="text-success">Rating</p>
+                            <p class="h4">100%</p>
+                        </div>
+                        <div class="rating ">
+                            <p class="text-success">Ship on time</p>
+                            <p class="h4">100%</p>
+                        </div>
+                        <div class="rating">
+                            <p class="text-success">Chat response</p>
+                            <p class="h4">100%</p>
+                        </div>
+                     </div>
+                     <p class='mx-4'>Become a Vendor ? <a href="{% url "usersauths:register" %}">Register now </a></p>
+                       
+                    </div>
+                    
+                </div>
+                <div class="boxPartCategory shadow-lg bg-light p-4 rounded-2 mx-5 mb-5">
+                    <h4 class="p-3 borderBottomm  mb-3">Category</h4>
+                    {% for c in category %}
+                    <div class="d-flex  flex-column ">
+                        <div class="d-flex align-items-center justify-content-between mb-4 displayBorderCategory ">
+                            <a href="{% url "apps:displayCategoryOfProducts" c.id %}" class="px-2 mx-0 mb-2 text-decoration-none text-black h5 ">
+                                {{c.title}} 
+                            </a>
+                            <span class="displayNumberCategoryDisponible">{{c.category.count}}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                  
+                   
+                  
+                </div>
+                <div class="boxPartCategory shadow-lg bg-light p-4 rounded-2 mx-5 ">
+                    <h4 class="p-3 borderBottomm mb-3">Just for you  {{user.username}} !</h4>
+                    <div class="row">
+                        {% for prod in products %}
+                        <div class="col-md-6 "> 
+                                <div class="imageNewProducts w-100 mb-3">
+                                    <a href="{% url "apps:productDetail" prod.id %}">
+                                        <img src="{{prod.image.url}}" class="rounded-2 w-75 h-75 mx-2 bg-light" alt="">
+                                    </a>
+                                    
+                                </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                  
+                 
+                   
+                  
+                </div>
             </div>
-        </div>
+            <div class="continer-fluid mx-2  containerForInformations">
+                <div class="navBarList d-flex align-items-center justify-content-start p-3">
+                    <a href="#" class="text-decoration-none mx-2 px-4 py-1   navLink active">Description</a>
+                    <a href="#" class="text-decoration-none mx-2 px-4 py-1   navLink ">More info</a>
+                    <a href="#" class="text-decoration-none mx-2 px-4 py-1   navLink ">Vendor</a>
+                    <a href="#" class="text-decoration-none mx-2 px-4 py-1   navLink ">Reviews</a>
+                </div>
+                <div class="content">
+                    <p>
+                        <strong>{{product.description}}</strong>
+                    </p>
+                </div>
+            </div>
+        </div> 
+           <div class="modal fade" id="displayModalToggle" aria-hidden="true" aria-labelledby="displayModalToggleLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="displayModalToggle">More 100% Bonus </h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start ">
+                
+                        </div>
+                        
+                        </div>
+                        
+                    </div>
+                   
+                    
+                  
+                    
+                   
+                   
+                 </div>
+              </div>
+              </div>
+            </div>
+          </div>
     </div>
     <script src="{% static 'apps/fichier/js/bootstrap.bundle.min.js' %}"></script>
 {% endblock content %}

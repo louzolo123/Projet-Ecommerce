@@ -100,7 +100,7 @@ class Product(models.Model):
     
 class ProductImages(models.Model):
     image = models.ImageField(upload_to='product-image' , default='products.jpg')
-    product = models.ForeignKey(Product , on_delete= models.SET_NULL , null=True, blank=True , related_name='p_image')
+    product = models.ForeignKey(Product , on_delete= models.SET_NULL , null=True, blank=True , related_name='p_images')
     date = models.DateTimeField(auto_now_add=True)
     class Meta:
         verbose_name = 'Product-image'

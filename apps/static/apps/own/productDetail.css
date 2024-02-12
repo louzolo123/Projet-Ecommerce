@@ -1,6 +1,46 @@
 .icons1{
     border: 1px solid rgb(163, 158, 158);
 }
-.blocInformationOne{
-    background: rgba(219, 207, 207, 0.763);
+
+.displayBorderCategory{
+    border: 1px solid rgb(238, 238, 238);
+    padding: 10px 30px;
+    width: 99%;
+    transition: 0.6s;
+  }
+  .displayBorderCategory:hover{
+    box-shadow: 1px 1px 5px rgba(76, 75, 75, 0.3);
+    border: 1px solid rgb(18, 240, 18);
+    
+  }
+.image1{
+    border: 1px solid black;
+    background: #ffffff9f;
+}
+.containerForInformations{
+    border: 1px solid rgba(206, 201, 201, 0.849);
+    width: 69%;
+    margin-top: -990px;
+    height: 50vh;
+    border-radius: 8px;
+}
+.displayBonus{
+    cursor: pointer !important;;
+}
+.navLink{
+    border: 1px solid black;
+    border-radius: 15px;
+    color: black;
+}
+.navLink:hover{
+    color: rgb(9, 199, 9);
+    border: 1px solid rgb(9, 199, 9) ;
+}
+.active{
+    color: rgb(9, 199, 9);
+    border: 1px solid rgb(9, 199, 9) ;
+}
+.navLink::after{
+    color: rgb(9, 199, 9);
+    border: 1px solid rgb(9, 199, 9) ;
 }

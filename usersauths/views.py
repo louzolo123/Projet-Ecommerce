@@ -25,9 +25,13 @@ def register_user(request):
             # login(request , new_user)
             print('save with succes')
             return redirect('usersauths:login')
-        
+        else: 
+            messages.warning(request , 'Please verify your email or password ')   
     else:
         form = UserRegisterForm()
+       
+            
+        
         print('user cannot be registered')
     context ={
         'form' : form,

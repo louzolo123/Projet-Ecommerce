@@ -59,9 +59,16 @@ def vendor_detail(request , vendor_id):
         'category' : category,
     }
     return render(request , 'apps/vendorDetail.html', context)
+@login_required
 def product_detail(request , product_id):
     product = Product.objects.get(id=product_id)
+    category = Category.objects.order_by('-id').all()
+    products = Product.objects.all()[:5]
+    p_image = product.p_images.all()
     context  = {
         'product': product,
+        'category' : category,
+        'products' : products,
+        'p_images': p_image,
     }
     return render(request , 'apps/productDetail.html', context)
