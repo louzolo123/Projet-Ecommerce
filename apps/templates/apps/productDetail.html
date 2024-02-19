@@ -28,8 +28,7 @@
                         {% endfor %}
                     </div>
                     {% else %}
-                    <h5>Try to get more prodcuts here  <a class="text-primary displayBonus" data-bs-target="#displayModalToggle" data-bs-toggle="modal">All product</a>
-                    </h5>
+                                <h4>Oups No prodcuts similary... !</h4>
                     {% endif %}
              
                 </div>
@@ -94,17 +93,17 @@
                         <h4 class="mb-4">Return & Warranty</h4>
                         <h6 class="mb-2">
                             <p>
-                                <i class="fa fa-shield-alt"></i> 100% Authentic
+                                <i class="fa fa-shield-alt"></i> {{product.vendor.authentic_rating}} % Authentic
                             </p>
                         </h6>
                         <h6 class="mb-2">
                             <p>
-                                <i class="fa fa-undo-alt"></i> 100% Return
+                                <i class="fa fa-undo-alt"></i> {{product.vendor.days_return}} % Return
                             </p>
                         </h6>
                         <h6>
                             <p>
-                                <i class="fa fa-calendar-check"></i> 12 Months Warranty
+                                <i class="fa fa-calendar-check"></i> {{product.vendor.warranty_period}} Months Warranty
                             </p>
                         </h6>
                      </div>
@@ -116,6 +115,9 @@
                 <div class="blocInformationOne shadow-lg bg-light p-4 rounded-2 mx-5 mb-5">
                     <h4 class="mb-4">Vendor</h4>
                     <div class="container">
+                        <div class="boxOneImage">
+                            <img src="{{ product.vendor.image.url }}" alt="">
+                        </div>
                         <h5 class="text-success">{{product.vendor.title}} C.O</h5>
                         <p>⭐⭐⭐⭐⭐ (5 reviews)</p>
                         <p>
@@ -131,15 +133,15 @@
                      <div class="d-flex align-items-center justify-content-around text-center mb-3" >
                         <div class="rating">
                             <p class="text-success">Rating</p>
-                            <p class="h4">100%</p>
+                            <p class="h4"> {{product.vendor.authentic_rating}} %</p>
                         </div>
                         <div class="rating ">
                             <p class="text-success">Ship on time</p>
-                            <p class="h4">100%</p>
+                            <p class="h4">{{product.vendor.shipping_on_time}} %</p>
                         </div>
                         <div class="rating">
                             <p class="text-success">Chat response</p>
-                            <p class="h4">100%</p>
+                            <p class="h4"> {{product.vendor.chat_resp_time}} %</p>
                         </div>
                      </div>
                      <p class='mx-4'>Become a Vendor ? <a href="{% url "usersauths:register" %}">Register now </a></p>
@@ -196,32 +198,12 @@
                     </p>
                 </div>
             </div>
-        </div> 
-           <div class="modal fade" id="displayModalToggle" aria-hidden="true" aria-labelledby="displayModalToggleLabel" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="displayModalToggle">More 100% Bonus </h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-start ">
-                
-                        </div>
-                        
-                        </div>
-                        
-                    </div>
-                   
-                    
-                  
-                    
-                   
-                   
-                 </div>
+        </div>
               </div>
               </div>
             </div>
           </div>
+          
     </div>
     <script src="{% static 'apps/fichier/js/bootstrap.bundle.min.js' %}"></script>
 {% endblock content %}

@@ -64,11 +64,13 @@ def product_detail(request , product_id):
     product = Product.objects.get(id=product_id)
     category = Category.objects.order_by('-id').all()
     products = Product.objects.all()[:5]
+    productCategory = Product.objects.filter(category = product.category)
     p_image = product.p_images.all()
     context  = {
         'product': product,
         'category' : category,
         'products' : products,
         'p_images': p_image,
+        'productCategory':productCategory
     }
     return render(request , 'apps/productDetail.html', context)
