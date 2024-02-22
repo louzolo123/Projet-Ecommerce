@@ -10,69 +10,156 @@
     <link href="https://fonts.googleapis.com/css2?family=Sunflower:wght@300&display=swap" rel="stylesheet">
 {% endblock styles %}
 {% block content %}
-    <div class="container-fluid w-100 h-100 mt-3">
+    <div class="container-fluid w-100 ">
         <div class="row">
-            <div class="col-md-4 ">
-                <div class="container">
-                    <img src="{{product.image.url}}" class="w-100 h-100 mb-3 border-1 border-black" alt="">
-                    {% if p_images %}
-                    <h5>Complete your cart with kits on Tekissa {{user.username}} !</h5>
-                    <div class="displayOtherProductSimilary d-flex align-items-center mt-4">
-                        
-                        {% for p_image in p_images  %}
-                        <div class="image1  mx-2 w-50 h-50 rounded-2 ">
-                            <a href="{% url "apps:productDetail" p_image.id %}">
-                                <img src="{{p_image.image.url}}" class="rounded-2 w-75 h-75 mx-2  p-2" alt="">
-                            </a>
+            <div class="col-md-8">
+                <div class="container d-flex align-items-center ">
+                    <div class="boxOneForDisplayImage">
+                        <div class="container">
+                            <img src="{{product.image.url}}" class="w-100 h-100 mb-3 border-1 border-black" alt="">
+                            {% if p_images %}
+                            <h5>Complete your cart with kits on Tekissa {{user.username}} !</h5>
+                            <div class="displayOtherProductSimilary d-flex align-items-center mt-4">
+                                
+                                {% for p_image in p_images  %}
+                                <div class="image1  mx-2 w-50 h-50 rounded-2 ">
+                                    <a href="{% url "apps:productDetail" p_image.id %}">
+                                        <img src="{{p_image.image.url}}" class="rounded-2 w-75 h-75 mx-2  p-2" alt="">
+                                    </a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                        <h4>Oups No prodcuts similary... !</h4>
+                            {% endif %}
+                     
                         </div>
-                        {% endfor %}
+                     
                     </div>
-                    {% else %}
-                                <h4>Oups No prodcuts similary... !</h4>
-                    {% endif %}
-             
+                    <div class="boxOneForDisplayContent">
+                        <div class="container">
+                            <div class="displayFunctionSale bg-danger w-25  text-center rounded-3 px-1 py-1 mb-3">
+                                <p class='text-light'>Reduce: -{{product.get_pourcentage|floatformat:0}} % </p>
+                            </div>
+                            <h1 class="text-black mb-1">
+                                {{product.title}}
+                            </h1>
+                            <p>⭐⭐⭐⭐⭐(5.0)</p>
+                            <div class="displayPriceProduct d-flex">
+                                <div class="displayPrice">
+                                    <h1 class="text-success">${{product.price}}</h1>
+                                </div>
+                                <div class="displayOldPriceAndPourcentage flex-column mx-2 p-0">
+                                    <p>{{product.get_pourcentage|floatformat:0}}% off </p>
+                                    <h3> <strike>${{product.old_price}}</strike></h3>
+                                </div>
+                            </div>
+                            <p>{{product.description|truncatechars:100}}</p>
+                            <div class="d-flex align-items-center">
+                                <div class="DiaplayAdd">
+                                    <input type="number" value="1" min="1" max="900" class="p-1">
+                                </div>
+                                <div class="add mx-1">
+                                    <button class="bg-success text-light p-3 border-success">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        Add to cart
+                                    </button>
+                                </div>
+                                <div class="icons1 p-3 mx-2 ">
+                                    <i class="fa-regular fa-heart"></i>
+                                </div>
+                                <div class="icons1 p-3 mx-2 ">
+                                    <i class="fa fa-share"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
-             
-            </div>
-        
-            <div class="col-md-4 ">
-                <div class="container">
-                    <div class="displayFunctionSale bg-danger w-25  text-center rounded-3 px-1 py-1 mb-3">
-                        <p class='text-light'>Reduce: -{{product.get_pourcentage|floatformat:0}} % </p>
-                    </div>
-                    <h1 class="text-black mb-1">
-                        {{product.title}}
-                    </h1>
-                    <p>⭐⭐⭐⭐⭐(5.0)</p>
-                    <div class="displayPriceProduct d-flex">
-                        <div class="displayPrice">
-                            <h1 class="text-success">${{product.price}}</h1>
+                    <div class="continer-fluid mx-2  containerForInformations mt-3 mb-5">
+                        <div class="navBarList d-flex align-items-center justify-content-start p-3">
+                            <a  class="text-decoration-none mx-2 px-4 py-1   navLink active ">Description</a>
+                            <a  class="text-decoration-none mx-2 px-4 py-1   navLink  more ">More info</a>
+                            <a  class="text-decoration-none mx-2 px-4 py-1   navLink  vendor">Vendor</a>
+                            <a  class="text-decoration-none mx-2 px-4 py-1   navLink reviews">Reviews</a>
                         </div>
-                        <div class="displayOldPriceAndPourcentage flex-column mx-2 p-0">
-                            <p>{{product.get_pourcentage|floatformat:0}}% off </p>
-                            <h3> <strike>${{product.old_price}}</strike></h3>
+                        <div class="content1 p-3">
+                            <p>
+                                <strong>{{product.description}}</strong>
+                            </p>
                         </div>
-                    </div>
-                    <p>{{product.description|truncatechars:100}}</p>
-                    <div class="d-flex align-items-center">
-                        <div class="DiaplayAdd">
-                            <input type="number" value="1" min="1" max="900" class="p-1">
+                        <div class="content2 p-3">
+                            <p>
+                                <strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit laudantium reiciendis sapiente repudiandae suscipit, explicabo magni beatae officia blanditiis maiores molestias eveniet obcaecati dignissimos nostrum aperiam, ipsam earum voluptatibus ipsa.</strong>
+                            </p>
                         </div>
-                        <div class="add mx-1">
-                            <button class="bg-success text-light p-3 border-success">
-                                <i class="fa fa-shopping-cart"></i>
-                                Add to cart
-                            </button>
+                        <div class="content3 p-3">
+                            <p>
+                                <strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit laudantium reiciendis sapiente repudiandae suscipit, explicabo magni beatae officia blanditiis maiores molestias eveniet obcaecati dignissimos nostrum aperiam, ipsam earum voluptatibus ipsa.</strong>
+                            </p>
                         </div>
-                        <div class="icons1 p-3 mx-2 ">
-                            <i class="fa-regular fa-heart"></i>
-                        </div>
-                        <div class="icons1 p-3 mx-2 ">
-                            <i class="fa fa-share"></i>
+                        <div class="content4 p-3">
+                            <p>
+                                <strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit laudantium reiciendis sapiente repudiandae suscipit, explicabo magni beatae officia blanditiis maiores molestias eveniet obcaecati dignissimos nostrum aperiam, ipsam earum voluptatibus ipsa.</strong>
+                            </p>
                         </div>
                     </div>
-                </div>
-               
+                    <div class="container-fluid mx-2 mt-2">
+                        <h4 class='text-success '>Related Products</h4>
+                        <hr>
+                        <div class="container w-100">
+                            <div class="row">
+                                {% for p in productCategory %}
+                                <div class="col-md-4  ">
+                                    
+                                    <div class="card shadow-sm mx-1 mb-3" style="width: 18rem;">
+                                        <div class="bagde position-absolute m-2 displayPourcentage bg-danger rounded-2 w-25 text-center py-1">
+                                            <p class="text-light ">-{{p.get_pourcentage|floatformat:0}}%</p>
+                                        </div>
+                                        <div class="hoverIcons d-flex  position-absolute justify-content-center">
+                                            <a href="{% url 'apps:productDetail' p.id %}" class="text-black text-decoration-none">
+                                                <i class="fa-regular fa-eye"></i>
+                                            </a>
+                                            <a href="#" class="text-black text-decoration-none"><i class="fa fa-share"></i></a>
+                                            <a href="#" class="text-black text-decoration-none">
+                                                <i class="fa-regular fa-heart"></i> 
+                                            </a>
+                                            
+                                            
+                                        </div>
+                                        <a href='{% url "apps:productDetail" p.id %}'>
+                                            <img src="{{p.image.url}}" class="card-img-top mx-auto p-3 rounded-2" alt="...">
+                                        </a>
+                                        
+                                        <div class="card-body">
+                                          <p class="card-text">{{p.category.title}}</p>
+                                          <h5>{{p.title}}</h5>
+                                          <p>⭐⭐⭐⭐</p>
+                                          <div class="d-flex justify-content-between align-items-center">
+                                            <div class="price">
+                                               $ {{p.price}}
+                                            </div>
+                                            <div class="old-price">
+                                                <strike>
+                                                    $ {{p.old_price}}
+                                                </strike>
+                                            </div>
+                                            <div class="cart">
+                                                <button class="btn btn-info rounded-1 p-1 text-light"><i class="fa fa-shopping-cart"></i> Add</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                </div>
+                                {% endfor %}
+                               
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                
+                
             </div>
             <div class="col-md-4  justify-content-center">
                 <div class="blocInformationOne shadow-lg bg-light p-4 rounded-2 mx-5 mb-5">
@@ -185,25 +272,22 @@
                   
                 </div>
             </div>
-            <div class="continer-fluid mx-2  containerForInformations">
-                <div class="navBarList d-flex align-items-center justify-content-start p-3">
-                    <a href="#" class="text-decoration-none mx-2 px-4 py-1   navLink active">Description</a>
-                    <a href="#" class="text-decoration-none mx-2 px-4 py-1   navLink ">More info</a>
-                    <a href="#" class="text-decoration-none mx-2 px-4 py-1   navLink ">Vendor</a>
-                    <a href="#" class="text-decoration-none mx-2 px-4 py-1   navLink ">Reviews</a>
-                </div>
-                <div class="content">
-                    <p>
-                        <strong>{{product.description}}</strong>
-                    </p>
-                </div>
-            </div>
         </div>
-              </div>
-              </div>
-            </div>
-          </div>
-          
     </div>
     <script src="{% static 'apps/fichier/js/bootstrap.bundle.min.js' %}"></script>
+    <script>
+        const description = document.querySelector('.navBarList > .active ')
+        console.log(description)
+        const more = document.querySelector('.more')
+        const vendor = document.querySelector('.vendor')    
+        const reviews = document.querySelector('.reviews')
+        const contentOne = document.querySelector('.content1')
+        const contentTwo = document.querySelector('.content2')
+        const contentThree = document.querySelector('.content3')
+        const contentFour = document.querySelector('.content4')
+       description.addEventListener('click', (e) =>{
+            
+            
+       })
+    </script>
 {% endblock content %}
